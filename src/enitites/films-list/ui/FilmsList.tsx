@@ -41,7 +41,7 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
     return (
         <div className={`films-list-base ${className}`} style={style}>
             <Input onChange={(value: string) => setSearch(value)} icon={searchIcon} />
-            <div style={{ overflowY: 'scroll', width: '100%', maxHeight: 'calc(100vh - 100px)' }}>
+            <div style={{ overflowY: 'scroll', maxHeight: 'calc(100vh - 100px)' }}>
                 {films?.map(el => (
                     <React.Fragment key={el.id}>
                         <FilmCard {...el} />

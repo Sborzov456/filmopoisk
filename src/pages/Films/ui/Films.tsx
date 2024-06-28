@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FilmsList } from '../../../enitites/FilmsList';
-import { FilmsFilter, Filters } from '../../../features/FilmsFilter';
+import { FilmsList } from '../../../enitites/films-list';
+import { FilmsFilter, Filters } from '../../../features/films-filter';
 import './style.scss';
 
 export function Films() {

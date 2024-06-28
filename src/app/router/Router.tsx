@@ -1,7 +1,7 @@
 import { redirect, } from 'react-router-dom';
 import RootLayout from '../layout/RootLayout';
-import { Films } from '../../pages/Films';
-import { Film } from '../../pages/Film';
+import { Films } from '../../pages/films';
+import { Film } from '../../pages/film';
 import {
   createBrowserRouter,
 } from "react-router-dom";

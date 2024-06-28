@@ -6,5 +6,5 @@ export type Film = {
     rating: number;
     genre: string;
     release_year: number;
-    poster: ImageData;
+    poster: string; // base64
 }
