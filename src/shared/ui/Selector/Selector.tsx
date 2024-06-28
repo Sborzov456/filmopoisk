@@ -29,7 +29,7 @@ export default function Selector({ items, placeholder, itemTemplate, onChange, c
         }
     };
     return (
-        <div className={`dropdown ${className}`} onClick={() => setIsOpen(!isOpen)}>
+        <div className={`dropdown ${isOpen ? 'opened' : ''} ${className}`} onClick={() => setIsOpen(!isOpen)}>
             <span>{value ? value : placeholder ?? ''}</span>
             <img src={isOpen ? openedIcon : closedIcon} />
             {isOpen && (

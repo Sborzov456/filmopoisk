@@ -10,8 +10,8 @@ type IconButtonProps = {
 
 export default function IconButton({ className, style, icon, onClick }: IconButtonProps) {
     return (
-        <div style={style} className={`icon-button ${className}`} onClick={onClick}>
+        <button style={style} className={`icon-button ${className}`} onClick={onClick}>
             <img src={icon}/>
-        </div>
+        </button>
     );
 }

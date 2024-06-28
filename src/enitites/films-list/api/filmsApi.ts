@@ -8,12 +8,17 @@ type GetFilmsQuery = {
     filters?: Filters
 }
 
+export type GetFilmsResponse = {
+    search_result: Film[];
+    total_pages: number
+}
+
 export const filmsApi = createApi({
     reducerPath: 'filmsApi',
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3030/api/v1'}),
     tagTypes: ['Films'],
     endpoints: (build) => ({
-        getFilms: build.query<Film[], GetFilmsQuery | void>({
+        getFilms: build.query<GetFilmsResponse, GetFilmsQuery | void>({
             query: (params) => ({
                 url: 'search/',
                 params: {
@@ -23,7 +28,6 @@ export const filmsApi = createApi({
                 }
             }),
             providesTags: () => ['Films'],
-            transformResponse: (response: { search_result:  Film[]}) => response.search_result,
         }),
       
     })

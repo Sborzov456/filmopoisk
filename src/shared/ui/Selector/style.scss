@@ -5,26 +5,30 @@
     align-content: center;
     justify-content: space-between;
     position: relative;
-    border: 1px solid black;
+    border: 1px solid var(--gray-color);
     border-radius: var(--default-border-radius);
     user-select: none;
+
+    &.opened {
+        border-color: var(--red-color);
+    }
  }
 
 .dropdown-menu {
     margin: 0px;
     margin-top: 5px;
     top: 100%;
-    left: 0;
+    left: -10px;
     right: 0;
     display: flex;
     flex-direction: column;
     position: absolute;
     background-color: var(--base-color);
-    min-width: 160px;
+    width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border-radius: var(--default-border-radius);
-    padding: 0;
+    padding: 10px;
 
 }
 
@@ -33,6 +37,7 @@
         color: black;
         text-decoration: none;
         display: block;
+        margin: 5px 0px 5px 0px;
     }
 }
 

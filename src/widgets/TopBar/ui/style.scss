@@ -1,6 +1,19 @@
 .top-bar {
-    background-color: red;
+    background-color: var(--black-color);
+    color: var(--base-color);
     position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     top: 0;
+    height: 88px;
     z-index: 1000;
+    h1 {
+        margin-left: 10px;
+    }
+    .login-button {
+        background-color: var(--red-color);
+        margin-right: 30px;
+        color: var(--base-color);
+    }
 }

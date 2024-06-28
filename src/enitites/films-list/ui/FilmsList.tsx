@@ -9,6 +9,7 @@ import rightArrowIcon from '@/shared/icons/right-arrow.svg';
 import useDebounce from '@/shared/hooks/useDebounce';
 import Input from '@/shared/ui/input/Input';
 import searchIcon from '@/shared/icons/search.svg';
+import { canDecreasePage, canIncreasePage } from '../lib/paginationHelpers';
 
 export type FilmsListProps = {
     style?: React.CSSProperties;
@@ -28,7 +29,7 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
         page,
         filters: Object.assign({ ...(filters ?? {}) }, debouncedSearch ? { title: debouncedSearch } : {}),
     });
-    console.log(films)
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -40,17 +41,18 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
     }
     return (
         <div className={`films-list-base ${className}`} style={style}>
-            <Input onChange={(value: string) => setSearch(value)} icon={searchIcon} />
-            <div style={{ overflowY: 'scroll', maxHeight: 'calc(100vh - 100px)' }}>
-                {films?.map(el => (
+            <Input className='search-input' onChange={(value: string) => setSearch(value)} icon={searchIcon} />
+            <div style={{ overflowY: 'scroll', height: 'calc(100vh - 160px - 88px)' }}>
+                {films?.search_result?.map(el => (
                     <React.Fragment key={el.id}>
                         <FilmCard {...el} />
                     </React.Fragment>
                 ))}
             </div>
             <div className='pagination-panel'>
-                <IconButton onClick={() => setPage(page - 1)} icon={leftArrowIcon} />
-                <IconButton onClick={() => setPage(page + 1)} icon={rightArrowIcon} />
+                <IconButton className={!canDecreasePage(page) ? 'disabled' : ''} onClick={() => canDecreasePage(page) && setPage(page - 1)} icon={leftArrowIcon} />
+                    {page}
+                <IconButton className={!canIncreasePage(page, films.total_pages) ? 'disabled' : ''} onClick={() => canIncreasePage(page, films.total_pages) && setPage(page + 1)} icon={rightArrowIcon} />
             </div>
         </div>
     );

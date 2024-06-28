@@ -1,11 +1,10 @@
-.icon-button {
+.ui-button {
     margin: 0;
     padding: 0;
     border: none;
-    
-    width: 32px;
+    border-radius: var(--default-border-radius);
+    width: 62px;
     height: 32px;
-    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
