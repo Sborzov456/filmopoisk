@@ -1,0 +1,12 @@
+.films-page-layout {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    .films-filter {
+        width: 400px;
+        height: 200px;
+    }
+    .films-list {
+        width: 100%;
+    }
+}
