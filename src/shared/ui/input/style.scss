@@ -1,22 +1,24 @@
 .ui-input-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px; 
-    padding: 2px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    position: relative;
-    input {
-        flex-grow: 1; 
-        border: none;
+    .ui-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px; 
+        padding: 2px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
         outline: none;
-        font-size: 16px;
-        background-color: transparent;
-    }
-    .input-icon {
-        margin-right: 8px;
-        margin-left: 5px;
+        position: relative;
+        input {
+            flex-grow: 1; 
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background-color: transparent;
+        }
+        .input-icon {
+            margin-right: 8px;
+            margin-left: 5px;
+        }
     }
 }

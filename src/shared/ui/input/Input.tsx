@@ -8,14 +8,23 @@ interface InputProps {
     children?: React.ReactNode;
     icon?: string;
     className?: string;
+    label?: string;
 }
 
-const Input: React.FC<InputProps> = ({ placeholder, value, onChange, children, icon, className}) => {
+const Input: React.FC<InputProps> = ({ placeholder, value, onChange, children, icon, className, label }) => {
     return (
-        <div className={`ui-input-wrapper ${className}`}>
-            {icon && <span className='input-icon'>{<img src={icon} />}</span>}
-            {children}
-            <input type='text' placeholder={placeholder || ''} value={value} onChange={e => onChange(e.target.value)} />
+        <div className='ui-input-wrapper'>
+            {label || ''}
+            <div className={`ui-input ${className}`}>
+                {icon && <span className='input-icon'>{<img src={icon} />}</span>}
+                {children}
+                <input
+                    type='text'
+                    placeholder={placeholder || ''}
+                    value={value}
+                    onChange={e => onChange(e.target.value)}
+                />
+            </div>
         </div>
     );
 };

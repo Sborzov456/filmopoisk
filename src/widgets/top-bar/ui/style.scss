@@ -11,9 +11,15 @@
     h1 {
         margin-left: 10px;
     }
+    button {
+        margin-right: 30px;
+    }
+    .logout-button {
+        background-color: var(--gray-color);
+        color: var(--base-color);
+    }
     .login-button {
         background-color: var(--red-color);
-        margin-right: 30px;
         color: var(--base-color);
     }
 }

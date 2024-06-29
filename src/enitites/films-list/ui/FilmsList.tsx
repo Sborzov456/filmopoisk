@@ -3,7 +3,7 @@ import { filmsApi } from '../api/filmsApi';
 import FilmCard from './FilmCard';
 import './style.scss';
 import { Filters } from '../model/Filters';
-import IconButton from '../../../shared/ui/IconButton/IconButton';
+import IconButton from '../../../shared/ui/icon-button/IconButton';
 import leftArrowIcon from '@/shared/icons/left-arrow.svg';
 import rightArrowIcon from '@/shared/icons/right-arrow.svg';
 import useDebounce from '@/shared/hooks/useDebounce';

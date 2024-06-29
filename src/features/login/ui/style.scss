@@ -1,0 +1,13 @@
+
+.ui-login {
+    // background-color: var(--base-color);
+    // border-radius: var(--default-border-radius);
+    // box-shadow: var(--default-shadow);
+    .login-button {
+        background-color: var(--red-color);
+        color: var(--base-color);
+    }
+    .ui-input-wrapper {
+        margin: 15px
+    }
+}
