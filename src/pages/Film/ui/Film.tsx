@@ -23,7 +23,7 @@ export function Film() {
 
     return (
         <div className='film-page'>
-            <FilmCard className='full-page' {...(omit(film, 'actors') as Omit<typeof film, 'actors'>)} />
+            <FilmCard className='full-page' {...(omit(film, 'actors') as Omit<typeof film, 'actors'>)} isRating={true}/>
             <div className='actors-panel'>
                 <h2> Актеры </h2>
                 <ActorsBar actors={film.actors} />

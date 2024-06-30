@@ -29,16 +29,21 @@ export function FilmsFilter({ style, className, onFilter }: FilmsFilterProps) {
                 className='select-filter'
                 items={Object.keys(GENRES).map(key => ({ key: key, data: GENRES[key as keyof typeof GENRES] }))}
                 onChange={data => {
-                    (data as FilterValue).key !== '0' &&
-                        setFilters({ ...filters, genre: (data as FilterValue).key as Filters['genre'] });
+                    (data as FilterValue).key === '0'
+                        ? setFilters({ ...filters, genre: undefined })
+                        : setFilters({ ...filters, genre: (data as FilterValue).key as Filters['genre'] });
                 }}
             />
             <Selector
                 className='select-filter'
                 items={Object.keys(YEARS).map(key => ({ key: key, data: YEARS[key as keyof typeof YEARS] }))}
                 onChange={data => {
-                    (data as FilterValue).key !== '0' &&
-                        setFilters({ ...filters, release_year: (data as FilterValue).key as Filters['release_year'] });
+                    (data as FilterValue).key !== '0'
+                        ? setFilters({ ...filters, release_year: undefined })
+                        : setFilters({
+                              ...filters,
+                              release_year: (data as FilterValue).key as Filters['release_year'],
+                          });
                 }}
             />
         </Card>
