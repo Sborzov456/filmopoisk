@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { filmsApi } from '../../enitites/films-list/api/filmsApi'
+import { filmsApi } from '../../enitites/film/api/filmsApi'
 import { userReducer } from '@/enitites/user'
 
 export const store = configureStore({

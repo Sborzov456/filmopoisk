@@ -1,0 +1,67 @@
+.list-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .list-items {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    white-space: nowrap;
+    transition: scroll 0.3s ease-in-out;
+    overflow: scroll;
+  }
+  
+  .list-item {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Стили для кнопок прокрутки */
+  .prev-button,
+  .next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: black;
+    cursor: pointer;
+    // font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  
+  .prev-button {
+    left: 0px;
+  }
+  
+  .next-button {
+    right: 0px;
+  }
+  
+  /* Активная кнопка прокрутки */
+  .prev-button.active,
+  .next-button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Стили для прокрутки */
+  .list-items::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .list-items {
+    scrollbar-width: none;
+  }
+  
+  .list-items {
+    -ms-overflow-style: none;
+  }
+  

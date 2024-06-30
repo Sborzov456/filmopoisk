@@ -1,7 +1,7 @@
 import React, { Key, useEffect, useState } from 'react';
 import { Card } from '../../../shared/ui';
 import Selector from '../../../shared/ui/selector/Selector';
-import { Filters, GENRES, YEARS } from '../../../enitites/films-list';
+import { Filters, GENRES, YEARS } from '../../../enitites/film';
 import './style.scss';
 
 type FilterValue = {

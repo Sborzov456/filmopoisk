@@ -1,0 +1,14 @@
+.ui-actors-bar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    // display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    .actor-photo {
+        margin: 0px 10px 0px 10px;
+        height: 230px;
+        width: 150px;
+        border-radius: var(--default-border-radius);
+    }
+}

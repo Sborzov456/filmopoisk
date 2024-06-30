@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FilmsList } from '../../../enitites/films-list';
+import { FilmsList } from '../../../enitites/film';
 import { FilmsFilter, Filters } from '../../../features/films-filter';
 import './style.scss';
 

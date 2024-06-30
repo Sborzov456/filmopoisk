@@ -1,0 +1,32 @@
+.films-list-base {
+    padding: 10px;
+    margin: 10px;
+    height: 100%;
+}
+
+.search-input {
+    color: var(--gray-color);
+    background-color: var(--base-color);
+    margin-bottom: 30px;
+}
+
+.list-card:hover {
+    transition: box-shadow 0.5s;
+    box-shadow: var(--default-shadow);
+}
+
+.pagination-panel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    button {
+        &.disabled {
+            background-color: transparent;
+        }
+        border: 1px solid var(--gray-color);
+        margin: 0px 10px 0px 10px;
+        box-shadow: var(--default-shadow);
+        background-color: var(--base-color);
+    }
+}

@@ -5,8 +5,9 @@ type CardProps = {
     style?: React.CSSProperties;
     className?: string;
     children?: React.ReactNode;
+    onClick?: () => void;
 };
 
-export function Card({ children, style, className }: CardProps) {
-    return <div style={style} className={`card ${className ?? ''}`}>{children}</div>;
+export function Card({ children, style, className, onClick }: CardProps) {
+    return <div style={style} className={`card ${className ?? ''}`} onClick={onClick}>{children}</div>;
 }

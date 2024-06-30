@@ -1,0 +1,10 @@
+.ui-rating {
+    display: flex;
+    flex-direction: row;
+    .selected {
+        background-color: var(--red-color);
+        img {
+
+        }
+    }
+}

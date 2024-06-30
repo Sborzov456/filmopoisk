@@ -9,7 +9,7 @@ export interface UserState {
 
 const initialState = { 
     username: localStorage['username'] ?? '', 
-    isLogin: localStorage['token']
+    isLogin: !!localStorage['token']
 } satisfies UserState as UserState;
 
 const userSlice = createSlice({
@@ -35,4 +35,5 @@ const userSlice = createSlice({
 
 export const { setUsername, setIsLogin, setUser } = userSlice.actions
 export const selectUser = (state: RootState) => state.user;
+export const selectIsLogin = (state: RootState) => state.user.isLogin;
 export const userReducer = userSlice.reducer;

@@ -1,17 +1,15 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import './style.scss'
 
-type IconButtonProps = {
-    className?: string;
-    style?: React.CSSProperties;
+interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     icon?: string;
-    onClick: MouseEventHandler
-};
+    color?: string;
+}
 
-export default function IconButton({ className, style, icon, onClick }: IconButtonProps) {
+export default function IconButton({ className, icon, color, ...buttonProps }: IconButtonProps) {
     return (
-        <button style={style} className={`icon-button ${className}`} onClick={onClick}>
-            <img src={icon}/>
+        <button className={`icon-button ${className}`} {...buttonProps}>
+            <img src={icon} color={color}/>
         </button>
     );
 }
