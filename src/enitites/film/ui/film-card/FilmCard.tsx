@@ -44,43 +44,43 @@ export function FilmCard({
     const [rateMovie, { data }] = filmsApi.useRateMovieMutation();
     return (
         <Card className={`${className} film-card`} onClick={() => onClick && onClick(id)}>
-            <div className='film-card-layout'>
-                <img src={poster} />
-                <h2>{title}</h2>
-                {user.isLogin && (
-                    <Rating
-                        rating={getCurrentRating(user.username, id)}
-                        onChange={rating => {
-                            updateMovieRating(user.username, id, rating);
-                            rateMovie({ id, rate: rating });
-                        }}
-                    />
-                )}
-                <table>
-                    <tbody>
+            <img src={poster} />
+            <h2>{title}</h2>
+            {user.isLogin ? (
+                <Rating
+                    rating={getCurrentRating(user.username, id)}
+                    onChange={rating => {
+                        updateMovieRating(user.username, id, rating);
+                        rateMovie({ id, rate: rating });
+                    }}
+                />
+            ) : (
+                <div></div>
+            )}
+            <table>
+                <tbody>
+                    <tr>
+                        <td className='property'>Жанр</td>
+                        <td> {genre} </td>
+                    </tr>
+                    {isRating ? (
                         <tr>
-                            <td className='property'>Жанр</td>
-                            <td> {genre} </td>
+                            <td className='property'>Рейтинг</td>
+                            <td> {data?.newAverageRate ?? rating} </td>
                         </tr>
-                        {isRating ? (
-                            <tr>
-                                <td className='property'>Рейтинг</td>
-                                <td> {data?.newAverageRate ?? rating} </td>
-                            </tr>
-                        ) : (
-                            <></>
-                        )}
-                        <tr>
-                            <td className='property'>Год</td>
-                            <td>{release_year}</td>
-                        </tr>
-                        <tr>
-                            <td className='property'>Описание</td>
-                            <td>{description}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    ) : (
+                        <></>
+                    )}
+                    <tr>
+                        <td className='property'>Год</td>
+                        <td>{release_year}</td>
+                    </tr>
+                    <tr>
+                        <td className='property'>Описание</td>
+                        <td>{description}</td>
+                    </tr>
+                </tbody>
+            </table>
             {children}
         </Card>
     );

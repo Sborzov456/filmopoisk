@@ -24,6 +24,7 @@ function HorizontalList<T>({ items, itemComponent: ItemComponent }: HorizontalLi
         } else if (canScrollLeft === false) {
             setCanScrollLeft(true);
         }
+        console.log(containerRef.current.scrollLeft, containerRef.current.scrollWidth / 2)
         if (containerRef.current.scrollLeft >= containerRef.current.scrollWidth / 2) {
             setCanScrollRight(false);
         } else if (canScrollRight === false) {

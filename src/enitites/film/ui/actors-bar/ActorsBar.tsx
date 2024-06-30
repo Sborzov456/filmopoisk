@@ -13,15 +13,8 @@ export default function ActorsBar({actors, className}: ActorBarProps) {
         return <>No actors</>
     }
     return (
-        <div className={`${className || ''} ui-actors-bar`}>
-            <HorizontalList<Actor> items={[...actors, ...actors, ...actors, ...actors]} itemComponent={({item}) => <img className='actor-photo' src={item.photo}/>}/>
-            {/* {[...actors, ...actors, ...actors, ...actors]?.map(el => {
-                return (
-                    <div>
-                        <img src={el.photo}/>
-                    </div>
-                )
-            })} */}
+        <div className={`${className || ''} actors-bar`}>
+            <HorizontalList<Actor> items={actors} itemComponent={({item}) => <img className='actor-photo' src={item.photo}/>}/>
         </div>
     )
 }

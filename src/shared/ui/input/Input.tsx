@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({ placeholder, value, onChange, children, i
                     type='text'
                     placeholder={placeholder || ''}
                     value={value}
-                    onChange={e => onChange(e.target.value)}
+                    onChange={(event) => onChange(event.target.value)}
                 />
             </div>
         </div>

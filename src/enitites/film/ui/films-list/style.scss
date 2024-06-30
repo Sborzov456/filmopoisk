@@ -1,10 +1,10 @@
-.films-list-base {
+.films-list {
     padding: 10px;
     margin: 10px;
     height: 100%;
 }
 
-.search-input {
+.films-search {
     color: var(--gray-color);
     background-color: var(--base-color);
     margin-bottom: 30px;
@@ -15,7 +15,7 @@
     box-shadow: var(--default-shadow);
 }
 
-.pagination-panel {
+.films-list-pagination {
     display: flex;
     flex-direction: row;
     align-items: center;

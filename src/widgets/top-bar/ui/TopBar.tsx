@@ -5,6 +5,7 @@ import { Login } from '@/features/login';
 import Modal from '@/shared/ui/modal/Modal';
 import { useAppDispatch, useAppSelector } from '@/app';
 import { selectUser, setIsLogin } from '@/enitites/user';
+import UserMiniCard from '@/enitites/user/ui/mini-card/UserMiniCard';
 
 export function TopBar() {
     const dispatch = useAppDispatch();
@@ -14,12 +15,12 @@ export function TopBar() {
         <div className='top-bar'>
             <h1> Фильмопоиск </h1>
             {user.isLogin ? (
-                <>
-                    {user.username}
+                <div className='user-widget'>
+                    <UserMiniCard/>
                     <Button className='logout-button' onClick={() => dispatch(setIsLogin(false))}>
                         Выйти
                     </Button>
-                </>
+                </div>
             ) : (
                 <Button className='login-button' onClick={() => setIsLoginOpen(true)}>
                     Войти

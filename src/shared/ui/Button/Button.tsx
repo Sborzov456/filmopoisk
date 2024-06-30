@@ -1,12 +1,7 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import './style.scss'
 
-type ButtonProps = {
-    className?: string;
-    style?: React.CSSProperties;
-    onClick: MouseEventHandler;
-    children: React.ReactNode;
-};
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
 export default function Button({ className, style, children, onClick }: ButtonProps) {
     return (

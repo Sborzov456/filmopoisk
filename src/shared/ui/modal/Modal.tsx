@@ -1,15 +1,14 @@
 // Modal.tsx
-import React, { useEffect } from 'react';
+import React, { HTMLAttributes, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './style.scss'
 import IconButton from '../icon-button/IconButton';
 import closeIcon from '@/shared/icons/close.svg'
 
-interface ModalProps {
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
     isOpen: boolean;
     onClose: () => void;
     root?: Element;
-    children: React.ReactNode;
     header?: string;
 }
 
@@ -31,9 +30,9 @@ export const Modal: React.FC<ModalProps> = ({ root, isOpen, onClose, children, h
     if (!isOpen) return null;
 
     return ReactDOM.createPortal(
-        <div className='modal'>
-            <div className='modal-content'>
-                <div className='header'>
+        <div className='ui-modal'>
+            <div className='ui-modal-content'>
+                <div className='ui-modal-header'>
                     <h3> {header || ''} </h3>
                     <IconButton icon={closeIcon} onClick={onClose}/>
                 </div>

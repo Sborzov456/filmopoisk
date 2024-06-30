@@ -31,19 +31,19 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
         page,
         filters: Object.assign({ ...(filters ?? {}) }, debouncedSearch ? { title: debouncedSearch } : {}),
     });
-
+    console.log(films)
     if (isLoading) {
         return <div>Loading...</div>;
     }
     if (error) {
         return <div>Error occurred</div>;
     }
-    if (!films) {
+    if (!films?.search_result.length) {
         return <div> No Films </div>;
     }
     return (
-        <div className={`films-list-base ${className}`} style={style}>
-            <Input className='search-input' onChange={(value: string) => setSearch(value)} icon={searchIcon} />
+        <div className={`films-list ${className}`} style={style}>
+            <Input className='films-search' onChange={(value: string) => setSearch(value)} icon={searchIcon} />
             <div style={{ overflowY: 'scroll', height: 'calc(100vh - 160px - 88px)' }}>
                 {films?.search_result?.map(el => (
                     <React.Fragment key={el.id}>
@@ -51,7 +51,7 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
                     </React.Fragment>
                 ))}
             </div>
-            <div className='pagination-panel'>
+            <div className='films-list-pagination'>
                 <IconButton className={!canDecreasePage(page) ? 'disabled' : ''} onClick={() => canDecreasePage(page) && setPage(page - 1)} icon={leftArrowIcon} />
                     {page}
                 <IconButton className={!canIncreasePage(page, films.total_pages) ? 'disabled' : ''} onClick={() => canIncreasePage(page, films.total_pages) && setPage(page + 1)} icon={rightArrowIcon} />

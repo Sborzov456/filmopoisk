@@ -1,4 +1,4 @@
-.dropdown {
+.ui-dropdown {
     padding: 0px 10px 0px 10px;
     min-height: 25px;
     display: flex;
@@ -14,7 +14,7 @@
     }
  }
 
-.dropdown-menu {
+.ui-dropdown-menu {
     margin: 0px;
     margin-top: 5px;
     top: 100%;
@@ -32,7 +32,7 @@
 
 }
 
-.dropdown-menu {
+.ui-dropdown-menu {
     li {
         color: black;
         text-decoration: none;
@@ -41,7 +41,7 @@
     }
 }
 
-.dropdown-menu li:hover {
+.ui-dropdown-menu li:hover {
     background-color: #f1f1f1;
     border-radius: var(--default-border-radius);
 }

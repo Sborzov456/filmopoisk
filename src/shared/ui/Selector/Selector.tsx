@@ -1,4 +1,4 @@
-import React, { Key } from 'react';
+import React, { HTMLAttributes, Key } from 'react';
 import { useState } from 'react';
 import './style.scss';
 import closedIcon from './icon-closed.svg';
@@ -10,13 +10,12 @@ type Item = Record<string, unknown> & {
     data?: unknown;
 };
 
-type SelectorProps = {
+interface SelectorProps extends HTMLAttributes<HTMLDivElement> {
     items?: Item[];
     placeholder?: string;
     itemTemplate?: (item: unknown) => React.ReactElement;
     onChange?: (data: unknown) => unknown;
-    className?: string;
-};
+}
 
 export default function Selector({ items, placeholder, itemTemplate, onChange, className }: SelectorProps) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -29,11 +28,11 @@ export default function Selector({ items, placeholder, itemTemplate, onChange, c
         }
     };
     return (
-        <div className={`dropdown ${isOpen ? 'opened' : ''} ${className}`} onClick={() => setIsOpen(!isOpen)}>
+        <div className={`ui-dropdown ${isOpen ? 'opened' : ''} ${className}`} onClick={() => setIsOpen(!isOpen)}>
             <span>{value ? value : placeholder ?? ''}</span>
             <img src={isOpen ? openedIcon : closedIcon} />
             {isOpen && (
-                <ul className='dropdown-menu'>
+                <ul className='ui-dropdown-menu'>
                     {items?.map(item => {
                         let JSXItem = null;
                         if (itemTemplate) {

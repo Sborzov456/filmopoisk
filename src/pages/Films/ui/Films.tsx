@@ -8,12 +8,11 @@ export function Films() {
     return (
         <div className='films-page-layout'>
             <FilmsFilter
-                className='films-filter'
                 onFilter={filters => {
                     setFilters(filters);
                 }}
             />
-            <FilmsList className='films-list' filters={filters} />
+            <FilmsList filters={filters} />
         </div>
     );
 }
