@@ -31,7 +31,6 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
         page,
         filters: Object.assign({ ...(filters ?? {}) }, debouncedSearch ? { title: debouncedSearch } : {}),
     });
-    console.log(films)
     if (isLoading) {
         return <div>Loading...</div>;
     }

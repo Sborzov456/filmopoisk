@@ -20,7 +20,6 @@ const _isSelected = (hoveredItems: number, rating: number, index: number) => {
 export default function Rating({ onChange, rating: currentRating = 0, max = 5 }: RatingProps) {
     const [rating, setRating] = useState<number>(currentRating);
     const [_hoveredItems, _setHoveredItems] = useState<number>(0);
-    console.log(_hoveredItems, rating);
     return (
         <div className='ui-rating'>
             {Array.from({ length: max }).map((_, index) => {

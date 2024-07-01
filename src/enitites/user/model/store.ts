@@ -27,7 +27,7 @@ const userSlice = createSlice({
         setIsLogin: (state, action: PayloadAction<boolean>) => {
             state.isLogin = action.payload;
             if (localStorage['token'] && !action.payload) {
-                localStorage['token'] = null;
+                delete localStorage['token'];
             }
         }
     },
