@@ -8,19 +8,19 @@ export const baseQuery =
         {
             url: string;
             method?: AxiosRequestConfig['method'];
-            data?: AxiosRequestConfig['data'];
+            body?: AxiosRequestConfig['data'];
             params?: AxiosRequestConfig['params'];
         },
         unknown,
         unknown
     > =>
-    async ({ url, method, data, params }) => {
+    async ({ url, method, body, params }) => {
         try {
             const response = await axios({
                 url: API_BASE_URL + url,
                 method,
                 params,
-                data,
+                data: body,
                 headers: { Authorization: `Bearer ${localStorage.token}` },
             });
             return response;

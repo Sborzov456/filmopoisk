@@ -8,7 +8,7 @@ type Token = string;
 
 export const login = async ({username, password}: LoginPayload) => {
     const response = await ApiClient.post({
-        url: '/login',
+        url: 'login',
         body: {username, password},
     })
     

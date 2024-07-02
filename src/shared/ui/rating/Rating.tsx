@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import IconButton from '../icon-button/IconButton';
 import starIcon from './star.svg';
+import filledStarIcon from './filled-star.svg'
 import './style.scss';
 
 type RatingProps = {
@@ -25,8 +26,8 @@ export default function Rating({ onChange, rating: currentRating = 0, max = 5 }:
             {Array.from({ length: max }).map((_, index) => {
                 return (
                     <IconButton
-                        className={_isSelected(_hoveredItems, rating, index) ? 'selected' : ''}
-                        icon={starIcon}
+                        className='ui-rating-icon'
+                        icon={_isSelected(_hoveredItems, rating, index) ? filledStarIcon : starIcon}
                         onClick={event => {
                             event.stopPropagation();
                             setRating(_hoveredItems as number);

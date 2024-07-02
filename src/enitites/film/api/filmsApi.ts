@@ -61,7 +61,7 @@ export const filmsApi = createApi({
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    authorization: `Bearer ${localStorage.token}`,
+                    // authorization: `Bearer ${localStorage.token}`,
                 },
                 body: {
                     movieId: id,

@@ -14,13 +14,13 @@ type FilmCardProps = Film & {
     isRating?: boolean;
 };
 
-function updateMovieRating(username: string, movieId: string, rating: number) {
+function updateMovieRating(username: string, movieId: number, rating: number) {
     const ratings = JSON.parse(localStorage.getItem(username) ?? '{}');
     ratings[movieId] = rating;
     localStorage.setItem(username, JSON.stringify(ratings));
 }
 
-function getCurrentRating(username, id: string) {
+function getCurrentRating(username: string, id: number) {
     return Number(JSON.parse(localStorage[username] || '{}')[id]) ?? 0;
 }
 
