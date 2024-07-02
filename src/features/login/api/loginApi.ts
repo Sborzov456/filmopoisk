@@ -1,16 +1,23 @@
-import { ApiClient } from "@/shared/api/ApiClient";
+import { ApiClient } from '@/shared/api/ApiClient';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AppDispatch } from '@/app/store/store';
 
 type LoginPayload = {
     username: string;
     password: string;
-}
-type Token = string;
+};
+export type Token = string;
 
-export const login = async ({username, password}: LoginPayload) => {
+export const authByLogin = createAsyncThunk<
+    Token,
+    LoginPayload,
+    {
+        dispatch: AppDispatch;
+    }
+>('auth/login', async ({username, password}) => {
     const response = await ApiClient.post({
         url: 'login',
-        body: {username, password},
-    })
-    
-    return response.data.token as Token
-}
+        body: { username, password },
+    });
+    return response.data.token as Token;
+});

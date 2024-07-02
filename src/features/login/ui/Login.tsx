@@ -2,9 +2,11 @@ import { useReducer } from 'react';
 import './style.scss';
 import Input from '@/shared/ui/input/Input';
 import Button from '@/shared/ui/button/Button';
-import { login } from '../api/loginApi';
-import { useAppDispatch } from '@/app';
+import { authByLogin } from '../api/loginApi';
+import { useAppDispatch, useAppSelector } from '@/app';
 import { setUser } from '@/enitites/user';
+import { selectAuthStatus } from '../model/store';
+import Loader from '@/shared/ui/loader/Loader';
 
 type LoginProps = {
     onLogin?: () => void;
@@ -40,25 +42,35 @@ const loginFormReducer = (state: LoginForm, action: LoginFromAction): LoginForm 
 export function Login({ onLogin }: LoginProps) {
     const dispatch = useAppDispatch();
     const [loginForm, dispatchLoginFormAction] = useReducer(loginFormReducer, { username: '', password: '' });
+    const authStatus = useAppSelector(selectAuthStatus);
+
+    if (authStatus === 'loaded') {
+        dispatch(setUser({ username: loginForm.username, isLogin: true }));
+        onLogin && onLogin();
+    }
 
     const onLoginButtonClick = async () => {
-        const token = await login(loginForm);
-        dispatch(setUser({ username: loginForm.username, isLogin: true }));
-        localStorage['token'] = token;
-        onLogin && onLogin();
+        dispatch(authByLogin(loginForm));
     };
+
     return (
         <div className='ui-login'>
-            <Input
-                placeholder='Введите логин'
-                label='Логин'
-                onChange={value => dispatchLoginFormAction({ type: 'SET_USERNAME', payload: value })}
-            />
-            <Input
-                placeholder='Введите пароль'
-                label='Пароль'
-                onChange={value => dispatchLoginFormAction({ type: 'SET_PASSWORD', payload: value })}
-            />
+            {authStatus !== 'loading' ? (
+                <>
+                    <Input
+                        placeholder='Введите логин'
+                        label='Логин'
+                        onChange={value => dispatchLoginFormAction({ type: 'SET_USERNAME', payload: value })}
+                    />
+                    <Input
+                        placeholder='Введите пароль'
+                        label='Пароль'
+                        onChange={value => dispatchLoginFormAction({ type: 'SET_PASSWORD', payload: value })}
+                    />
+                </>
+            ) : (
+                <Loader />
+            )}
             <Button className='login-button' onClick={onLoginButtonClick}>
                 Войти
             </Button>
