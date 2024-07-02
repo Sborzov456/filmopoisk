@@ -13,6 +13,19 @@
 .list-card:hover {
     transition: box-shadow 0.5s;
     box-shadow: var(--default-shadow);
+    cursor: pointer;
+}
+
+.films-not-found {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    div {
+        color: var(--gray-color);
+    }
 }
 
 .films-list-pagination {

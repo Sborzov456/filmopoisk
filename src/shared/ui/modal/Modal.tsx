@@ -5,7 +5,7 @@ import './style.scss'
 import IconButton from '../icon-button/IconButton';
 import closeIcon from '@/shared/icons/close.svg'
 
-interface ModalProps extends HTMLAttributes<HTMLDivElement> {
+export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
     isOpen: boolean;
     onClose: () => void;
     root?: Element;

@@ -12,6 +12,7 @@ import searchIcon from '@/shared/icons/search.svg';
 import { canDecreasePage, canIncreasePage } from '../../lib/paginationHelpers';
 import { useNavigate } from 'react-router-dom';
 import Loader from '@/shared/ui/loader/Loader';
+import FilmsNotFound from './FilmsNotFound';
 
 export type FilmsListProps = {
     style?: React.CSSProperties;
@@ -36,25 +37,22 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
         return <Loader/>;
     }
     if (error) {
-        return <div>Error occurred</div>;
-    }
-    if (!films?.search_result.length) {
-        return <div> No Films </div>;
+        return <div className='films-not-found'>Error occurred</div>;
     }
     return (
         <div className={`films-list ${className}`} style={style}>
             <Input className='films-search' onChange={(value: string) => setSearch(value)} icon={searchIcon} placeholder='Название фильма'/>
             <div style={{ overflowY: 'scroll', height: 'calc(100vh - 160px - 88px)' }}>
-                {films?.search_result?.map(el => (
+                {films?.search_result.length ? films.search_result?.map(el => (
                     <React.Fragment key={el.id}>
                         <FilmCard onClick={(id: number) => navigate(`/film/${id}`)} className='list-card' {...el} />
                     </React.Fragment>
-                ))}
+                )) : <FilmsNotFound/>}
             </div>
             <div className='films-list-pagination'>
                 <IconButton className={!canDecreasePage(page) ? 'disabled' : ''} onClick={() => canDecreasePage(page) && setPage(page - 1)} icon={leftArrowIcon} />
                     {page}
-                <IconButton className={!canIncreasePage(page, films.total_pages) ? 'disabled' : ''} onClick={() => canIncreasePage(page, films.total_pages) && setPage(page + 1)} icon={rightArrowIcon} />
+                <IconButton className={!canIncreasePage(page, films?.total_pages ?? 0) ? 'disabled' : ''} onClick={() => canIncreasePage(page, films?.total_pages ?? 0) && setPage(page + 1)} icon={rightArrowIcon} />
             </div>
         </div>
     );

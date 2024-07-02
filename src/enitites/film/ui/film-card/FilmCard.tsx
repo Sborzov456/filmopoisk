@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Film } from '../../model/Film';
 import { Card } from '@/shared/ui';
 import './style.scss';
 import Rating from '@/shared/ui/rating/Rating';
 import { useSelector } from 'react-redux';
-import {  selectUser } from '@/enitites/user';
+import { selectUser } from '@/enitites/user';
 import { filmsApi } from '../../api/filmsApi';
+import { useState } from 'react';
+import { FilmRating } from '../../model/FilmRating';
+import useDebounce from '@/shared/hooks/useDebounce';
 
 type FilmCardProps = Film & {
     className?: string;
@@ -39,6 +42,17 @@ export function FilmCard({
 }: FilmCardProps) {
     const user = useSelector(selectUser);
     const [rateMovie, { data }] = filmsApi.useRateMovieMutation();
+    const [ratingState, setRatingState] = useState<FilmRating>(rating as FilmRating);
+    const debouncedRating = useDebounce(ratingState, 300);
+
+    useEffect(() => {
+        if (debouncedRating === rating) {
+            return;
+        }
+        updateMovieRating(user.username, id, rating);
+        rateMovie({ id, rate: rating });
+    }, [debouncedRating, rateMovie, id, rating, user.username]);
+
     return (
         <Card className={`${className} film-card`} onClick={() => onClick && onClick(id)}>
             <img src={poster} />
@@ -47,8 +61,7 @@ export function FilmCard({
                 <Rating
                     rating={getCurrentRating(user.username, id)}
                     onChange={rating => {
-                        updateMovieRating(user.username, id, rating);
-                        rateMovie({ id, rate: rating });
+                        setRatingState(rating as FilmRating);
                     }}
                 />
             ) : (
