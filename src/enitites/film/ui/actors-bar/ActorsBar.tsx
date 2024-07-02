@@ -14,7 +14,14 @@ export default function ActorsBar({actors, className}: ActorBarProps) {
     }
     return (
         <div className={`${className || ''} actors-bar`}>
-            <HorizontalList<Actor> items={actors} itemComponent={({item}) => <img className='actor-photo' src={item.photo}/>}/>
+            <HorizontalList<Actor> items={actors} itemComponent={({item}) => (
+                <div className='actor-item'>
+                    <img className='actor-photo' src={item.photo}/>
+                    <div className='actor-name'> 
+                        {item.name}
+                    </div>
+                </div>
+            )}/>
         </div>
     )
 }

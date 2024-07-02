@@ -3,9 +3,22 @@
     flex-direction: column;
     padding: 50px 50px 0px 50px;
     height: 100%;
+    .film-card {
+        h2 {
+            font-size: 32px;
+        }
+        td {
+            color: var(--black-color);
+            padding-bottom: 0px;
+        }
+        .property {
+            font-weight: 700;
+        }
+    }
 }
 
 .full-page {
     height: 100%;
     grid-template-columns: 3fr 5fr 1fr;
+    grid-template-rows: 1fr 10fr;
 }
