@@ -36,11 +36,11 @@ export function FilmsFilter({ style, className, onFilter }: FilmsFilterProps) {
             <Selector
                 items={Object.keys(YEARS).map(key => ({ key: key, data: YEARS[key as keyof typeof YEARS] }))}
                 onChange={data => {
-                    (data as FilterValue).key !== '0'
+                    (data as FilterValue).key === '0'
                         ? setFilters({ ...filters, release_year: undefined })
                         : setFilters({
                               ...filters,
-                              release_year: (data as FilterValue).key as Filters['release_year'],
+                              release_year: (data as FilterValue).data as Filters['release_year'],
                           });
                 }}
             />

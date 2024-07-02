@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import userIcon from '../../asserts/user-icon.svg'
+import userIcon from '../../assets/user-icon.svg'
 
 interface UserMiniCardProps extends HTMLAttributes<HTMLImageElement> {}
 
