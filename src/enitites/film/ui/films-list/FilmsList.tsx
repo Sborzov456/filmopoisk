@@ -11,6 +11,7 @@ import Input from '@/shared/ui/input/Input';
 import searchIcon from '@/shared/icons/search.svg';
 import { canDecreasePage, canIncreasePage } from '../../lib/paginationHelpers';
 import { useNavigate } from 'react-router-dom';
+import Loader from '@/shared/ui/loader/Loader';
 
 export type FilmsListProps = {
     style?: React.CSSProperties;
@@ -32,7 +33,7 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
         filters: Object.assign({ ...(filters ?? {}) }, debouncedSearch ? { title: debouncedSearch } : {}),
     });
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
     if (error) {
         return <div>Error occurred</div>;
@@ -42,7 +43,7 @@ export function FilmsList({ style, className, filters }: FilmsListProps) {
     }
     return (
         <div className={`films-list ${className}`} style={style}>
-            <Input className='films-search' onChange={(value: string) => setSearch(value)} icon={searchIcon} />
+            <Input className='films-search' onChange={(value: string) => setSearch(value)} icon={searchIcon} placeholder='Название фильма'/>
             <div style={{ overflowY: 'scroll', height: 'calc(100vh - 160px - 88px)' }}>
                 {films?.search_result?.map(el => (
                     <React.Fragment key={el.id}>

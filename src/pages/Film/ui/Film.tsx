@@ -5,6 +5,7 @@ import { omit } from '@/shared/lib/omit';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import './style.scss';
+import Loader from '@/shared/ui/loader/Loader';
 
 export function Film() {
     const location = useLocation();
@@ -12,7 +13,7 @@ export function Film() {
     const { data: film, error, isLoading } = filmsApi.useGetFilmQuery({ id: Number(filmId) });
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
     if (error) {
         return <div>Error occurred</div>;

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import './style.scss';
 import Input from '@/shared/ui/input/Input';
 import Button from '@/shared/ui/button/Button';

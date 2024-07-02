@@ -26,6 +26,7 @@ export function FilmsFilter({ style, className, onFilter }: FilmsFilterProps) {
         <Card style={style} className={`films-filter ${className}`}>
             <h3> Фильтр </h3>
             <Selector
+                placeholder='Выберите жанр'
                 items={Object.keys(GENRES).map(key => ({ key: key, data: GENRES[key as keyof typeof GENRES] }))}
                 onChange={data => {
                     (data as FilterValue).key === '0'
@@ -34,6 +35,7 @@ export function FilmsFilter({ style, className, onFilter }: FilmsFilterProps) {
                 }}
             />
             <Selector
+                placeholder='Выберите год'
                 items={Object.keys(YEARS).map(key => ({ key: key, data: YEARS[key as keyof typeof YEARS] }))}
                 onChange={data => {
                     (data as FilterValue).key === '0'

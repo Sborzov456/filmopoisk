@@ -8,7 +8,14 @@
     border: 1px solid var(--gray-color);
     border-radius: var(--default-border-radius);
     user-select: none;
-
+    span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .ui-dropdown-placeholder {
+        color: var(--gray-color)
+    }
     &.opened {
         border-color: var(--red-color);
     }

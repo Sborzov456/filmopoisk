@@ -29,7 +29,7 @@ export default function Selector({ items, placeholder, itemTemplate, onChange, c
     };
     return (
         <div className={`ui-dropdown ${isOpen ? 'opened' : ''} ${className}`} onClick={() => setIsOpen(!isOpen)}>
-            <span>{value ? value : placeholder ?? ''}</span>
+            <span className={value ? '' : 'ui-dropdown-placeholder'}>{value ? value : placeholder ?? ''}</span>
             <img src={isOpen ? openedIcon : closedIcon} />
             {isOpen && (
                 <ul className='ui-dropdown-menu'>
