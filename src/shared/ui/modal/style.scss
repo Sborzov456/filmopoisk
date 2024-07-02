@@ -1,4 +1,4 @@
-.modal {
+.ui-modal {
     position: absolute;
     top: 0;
     left: 0;
@@ -10,13 +10,13 @@
     align-items: center;
   }
   
-  .modal-content {
+  .ui-modal-content {
     background-color: var(--base-color);
     padding: 20px;
     border-radius: var(--default-border-radius);
     display: flex;
     flex-direction: column;
-    .header {
+    .ui-modal-header {
       display: flex;
       flex-direction: row;
       align-items: center;

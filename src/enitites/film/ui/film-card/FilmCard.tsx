@@ -4,7 +4,7 @@ import { Card } from '@/shared/ui';
 import './style.scss';
 import Rating from '@/shared/ui/rating/Rating';
 import { useSelector } from 'react-redux';
-import { selectIsLogin, selectUser } from '@/enitites/user';
+import {  selectUser } from '@/enitites/user';
 import { filmsApi } from '../../api/filmsApi';
 
 type FilmCardProps = Film & {

@@ -6,6 +6,7 @@
     grid-template-columns: 1fr 5fr 2fr;
     grid-template-rows: 1fr 5fr;
     h2 {
+        margin-top: 0px;
         margin-left: 10px;
     }
     table {
@@ -29,6 +30,7 @@
         grid-row-end: 3;
         border-radius: var(--default-border-radius);
         aspect-ratio: 5 / 6;
+        max-height: 100%;
     }
     .ui-rating {
         justify-self: end;

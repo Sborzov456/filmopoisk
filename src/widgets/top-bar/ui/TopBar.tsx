@@ -11,7 +11,7 @@ export function TopBar() {
     const dispatch = useAppDispatch();
     const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
     const user = useAppSelector(selectUser);
-    return (
+     return (
         <div className='top-bar'>
             <h1> Фильмопоиск </h1>
             {user.isLogin ? (
