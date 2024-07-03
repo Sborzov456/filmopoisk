@@ -24,7 +24,8 @@ function updateMovieRating(username: string, movieId: number, rating: number) {
 }
 
 function getCurrentRating(username: string, id: number) {
-    return Number(JSON.parse(localStorage[username] || '{}')[id]) ?? 0;
+    const currentRating = Number(JSON.parse(localStorage[username] || '{}')[id]) 
+    return isNaN(currentRating) ? 0 : currentRating;
 }
 
 export function FilmCard({
@@ -42,15 +43,14 @@ export function FilmCard({
 }: FilmCardProps) {
     const user = useSelector(selectUser);
     const [rateMovie, { data }] = filmsApi.useRateMovieMutation();
-    const [ratingState, setRatingState] = useState<FilmRating>(rating as FilmRating);
+    const [ratingState, setRatingState] = useState<FilmRating>(getCurrentRating(user.username, id) as FilmRating);
     const debouncedRating = useDebounce(ratingState, 300);
-
-    useEffect(() => {
-        if (debouncedRating === rating) {
-            return;
+     useEffect(() => {
+        if (!user.isLogin || ratingState === 0) {
+            return
         }
-        updateMovieRating(user.username, id, rating);
-        rateMovie({ id, rate: rating });
+        updateMovieRating(user.username, id, debouncedRating);
+        rateMovie({ id, rate: debouncedRating });
     }, [debouncedRating, rateMovie, id, rating, user.username]);
 
     return (
@@ -59,7 +59,7 @@ export function FilmCard({
             <h2>{title}</h2>
             {user.isLogin ? (
                 <Rating
-                    rating={getCurrentRating(user.username, id)}
+                    rating={ratingState}
                     onChange={rating => {
                         setRatingState(rating as FilmRating);
                     }}

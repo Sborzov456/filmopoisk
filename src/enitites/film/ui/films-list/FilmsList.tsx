@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { filmsApi } from '../../api/filmsApi';
 import {FilmCard} from '../film-card/FilmCard';
 import './style.scss';
@@ -13,6 +13,7 @@ import { canDecreasePage, canIncreasePage } from '../../lib/paginationHelpers';
 import { useNavigate } from 'react-router-dom';
 import Loader from '@/shared/ui/loader/Loader';
 import FilmsNotFound from './FilmsNotFound';
+import { useRouterQueryParams } from '@/shared/hooks/useRouterQueryParams';
 
 export type FilmsListProps = {
     style?: React.CSSProperties;
@@ -22,9 +23,20 @@ export type FilmsListProps = {
 
 export function FilmsList({ style, className, filters }: FilmsListProps) {
     const navigate = useNavigate();
-    const [page, setPage] = useState<number>(1);
-    const [search, setSearch] = useState<string>('');
-    const debouncedSearch = useDebounce<typeof search>(search, 300);
+    const [pageFromQueryParams, setPageQueryParam] = useRouterQueryParams('page');
+    const [searchFromQueryParams, setSearchQueryParam] = useRouterQueryParams('search');
+    const [page, setPage] = useState<number>(Number(pageFromQueryParams) || 1);
+    const [search, setSearch] = useState<string>(searchFromQueryParams || '');
+    
+    useEffect(() => {
+        setPageQueryParam('' + page);
+    }, [page])
+
+    useEffect(() => {
+        setSearchQueryParam(search);
+    }, [search])
+
+    const debouncedSearch = useDebounce<typeof search>(search, 300, () => setPage(1));
     const {
         data: films,
         error,

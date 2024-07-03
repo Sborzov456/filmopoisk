@@ -26,11 +26,12 @@ export default function Rating({ onChange, rating: currentRating = 0, max = 5 }:
             {Array.from({ length: max }).map((_, index) => {
                 return (
                     <IconButton
+                        key={index}
                         className='ui-rating-icon'
                         icon={_isSelected(_hoveredItems, rating, index) ? filledStarIcon : starIcon}
                         onClick={event => {
                             event.stopPropagation();
-                            setRating(_hoveredItems as number);
+                             setRating(_hoveredItems as number);
                             onChange && onChange(index + 1);
                         }}
                         onMouseEnter={() => _setHoveredItems(index + 1)}
